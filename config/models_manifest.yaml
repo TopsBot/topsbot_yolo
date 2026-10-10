@@ -1,0 +1,29 @@
+# YOLO 模型清单：下载地址与安装目录
+# download_models.sh 会遍历 model_sources 逐个下载 zip，并把 files 列出的 .nb
+# 解压到 install_dir；required_models 是最终必须存在于 install_dir 的文件清单。
+
+install_dir: "~/topsbot/models"
+
+# 一个下载源可以包含多个模型文件（files 为 zip 内的 basename，按 basename 匹配，
+# 不关心其在 zip 内的目录层级）。同一别名可只写一次，脚本按 URL 去重只下载一次。
+model_sources:
+  # YOLO11 / YOLO26：NV12 零拷贝模型（供 tb_img / sensor_image / file 三种输入模式）
+  - url: "https://bj25486.apps.aliyunfile.com/disk/s/ZNbnRnSArHj?domainId=bj25486"
+    files:
+      - yolo11s_nv12_float16.nb
+      - yolo26s_nv12_float16.nb
+  # YOLOv5：BGR CPU 输入（NV12→RGB→NCHW 转换，见 yolov5_detector）
+  - url: "https://bj25486.apps.aliyunfile.com/disk/s/6AsPUEtHEMm?domainId=bj25486"
+    files:
+      - yolov5s_float16.nb
+  # YOLO11-Pose：BGR CPU 输入（17 关键点姿态估计）
+  - url: "https://bj25486.apps.aliyunfile.com/disk/s/7Hh2JdLJXbv?domainId=bj25486"
+    files:
+      - yolo11s_pose_float16.nb
+
+# 全部 source 的文件并集（最终安装后必须存在的 .nb 文件）
+required_models:
+  - yolo11s_nv12_float16.nb
+  - yolo26s_nv12_float16.nb
+  - yolov5s_float16.nb
+  - yolo11s_pose_float16.nb

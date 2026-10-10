@@ -1,0 +1,40 @@
+# topsbot_yolo 参数参考（不自动加载）
+#
+# 场景 yaml 为全量配置，见 config/README.md。
+# 本文件是字段字典，供复制与 ros2 param describe 对照。
+
+/**:
+  ros__parameters:
+  # --- 输入（订阅场景必填）---
+    input_msg: tb_img
+    input_topic: /tbmem_img
+    tb_img_profile: "480p"
+    frame_id: camera
+
+  # --- 输入（file 场景）---
+    image_file: ""
+    output_image_file: /tmp/topsbot_yolo/out_yolo11.jpg
+
+  # --- 输出 ---
+    publish_detections: true
+    detections_topic: /detections
+    frame_skip: 0
+    enable_profile: true
+
+  # --- 模型 ---
+    model_type: yolo11
+    model_path: ~/topsbot/models/yolo11s_nv12_float16.nb
+    device_id: 0
+
+  # --- 前处理 ---
+    preprocess.letterbox: true
+    preprocess.letterbox_color: [114, 114, 114]
+    preprocess.auto_input_size: true
+    preprocess.input_width: 640
+    preprocess.input_height: 640
+
+  # --- 后处理 ---
+    postprocess.confidence_threshold: 0.25
+    postprocess.nms_threshold: 0.45
+    postprocess.max_detections: 300
+    postprocess.class_names: []

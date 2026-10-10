@@ -1,0 +1,19 @@
+<library path="topsbot_yolo_backend">
+  <class name="yolo" type="topsbot_yolo::YoloBackend"
+         base_class_type="topsbot_ai_infer::IInferenceBackend">
+    <description>
+      YOLO11 / YOLO11-Pose / YOLO26 NV12 detection backend (ta_runtime,
+      taCV letterbox, dmabuf zero-copy). model_type selects the detector.
+    </description>
+  </class>
+
+  <!-- Compatibility aliases (see topsbot_ai_infer/test/test_backend_factory.cpp).
+       backend_factory has no alias map: every lookup name must be registered
+       here. The detector family is still chosen via model.type, not the alias. -->
+  <class name="yolo11_det" type="topsbot_yolo::YoloBackend"
+         base_class_type="topsbot_ai_infer::IInferenceBackend"/>
+  <class name="yolo26_det" type="topsbot_yolo::YoloBackend"
+         base_class_type="topsbot_ai_infer::IInferenceBackend"/>
+  <class name="yolov8_det" type="topsbot_yolo::YoloBackend"
+         base_class_type="topsbot_ai_infer::IInferenceBackend"/>
+</library>

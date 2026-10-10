@@ -1,0 +1,19 @@
+# file 离线单张 JPG + YOLO26
+/**:
+  ros__parameters:
+    input_msg: file
+    image_file: ""
+    output_image_file: /tmp/topsbot_yolo/out_yolo26.jpg
+    enable_profile: true
+    model_type: yolo26
+    model_path: ~/topsbot/models/yolo26s_nv12_float16.nb
+    preprocess:
+      letterbox: true
+      letterbox_color: [114, 114, 114]
+      auto_input_size: true
+      input_width: 640
+      input_height: 640
+    postprocess:
+      confidence_threshold: 0.25
+      nms_threshold: 0.45
+      max_detections: 300

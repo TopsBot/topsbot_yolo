@@ -1,0 +1,23 @@
+# tb_img 订阅 + YOLO11（640×480 NV12 零拷贝，配合 usb_cam mjpeg2nv12_*_zc）
+/**:
+  ros__parameters:
+    input_msg: tb_img
+    input_topic: /tbmem_img
+    tb_img_profile: "480p"
+    frame_id: camera
+    publish_detections: true
+    detections_topic: /detections
+    frame_skip: 0
+    enable_profile: true
+    model_type: yolo11
+    model_path: ~/topsbot/models/yolo11s_nv12_float16.nb
+    preprocess:
+      letterbox: true
+      letterbox_color: [114, 114, 114]
+      auto_input_size: true
+      input_width: 640
+      input_height: 640
+    postprocess:
+      confidence_threshold: 0.25
+      nms_threshold: 0.45
+      max_detections: 300

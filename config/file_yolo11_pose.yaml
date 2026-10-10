@@ -1,0 +1,19 @@
+# 离线文件模式 + YOLO11-Pose（17 关键点姿态估计）
+/**:
+  ros__parameters:
+    input_msg: file
+    image_file: ""
+    output_image_file: /tmp/yolo11_pose_out.jpg
+    enable_profile: true
+    model_type: yolo11_pose
+    model_path: ~/topsbot/models/yolo11s_pose_float16.nb
+    preprocess:
+      letterbox: true
+      letterbox_color: [114, 114, 114]
+      auto_input_size: true
+      input_width: 640
+      input_height: 640
+    postprocess:
+      confidence_threshold: 0.25
+      nms_threshold: 0.45
+      max_detections: 100

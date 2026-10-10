@@ -1,0 +1,29 @@
+# sensor_msgs/Image 订阅 + YOLOv5
+/**:
+  ros__parameters:
+    input_msg: sensor_image
+    input_topic: /camera/image_raw
+    frame_id: camera
+    publish_detections: true
+    detections_topic: /detections
+    frame_skip: 0
+    enable_profile: true
+    model_type: yolov5
+    model_path: ~/topsbot/models/yolov5s_float16.nb
+    preprocess:
+      letterbox: true
+      letterbox_color: [114, 114, 114]
+      auto_input_size: true
+      input_width: 640
+      input_height: 640
+    postprocess:
+      confidence_threshold: 0.25
+      nms_threshold: 0.45
+      max_detections: 300
+    # YOLOv5 anchor boxes (w,h pairs) per head. Change these to match your model variant.
+    # Defaults below are for yolov5s trained at 640×640 (COCO anchors).
+    # yolov5m/l/x or custom-trained models use different anchor sets.
+    anchors:
+      p3: [10, 13, 16, 30, 33, 23]       # stride-8  (small objects)
+      p4: [30, 61, 62, 45, 59, 119]      # stride-16 (medium objects)
+      p5: [116, 90, 156, 198, 373, 326]  # stride-32 (large objects)

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>topsbot_yolo</name>
+  <version>0.5.0</version>
+  <description>TOPSBOT YOLO NV12 inference node (ta_runtime + taCV letterbox, TbPerceptionTargets output).</description>
+
+  <maintainer email="developer@topsfuture.com">TOPSBOT</maintainer>
+  <license>Apache-2.0</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>tb_img_msgs</depend>
+  <depend>tb_det_msgs</depend>
+  <depend>pluginlib</depend>
+  <depend>libopencv-dev</depend>
+  <depend>libtacv</depend>
+  <depend>libdmabufheap</depend>
+  <depend>libtasys</depend>
+  <depend>libtaruntime</depend>
+  <depend>topsbot_ai_infer</depend>
+
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>topsbot_usb_cam</exec_depend>
+  <exec_depend>topsbot_webviz</exec_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

@@ -1,0 +1,39 @@
+/**:
+  ros__parameters:
+    # Input/output stays compatible with topsbot_yolo_det.
+    input_msg: tb_img
+    input_topic: /tbmem_img
+    tb_img_profile: "480p"
+    frame_id: camera
+    detections_topic: /detections
+    classifications_topic: /classifications
+    # When true, per-object attributes from the backend (e.g. mediapipe
+    # gesture/handedness) are forwarded to object_attributes_topic instead of
+    # the per-frame /classifications. Off by default to keep behaviour
+    # compatible with legacy mobilenet-style models.
+    publish_object_attributes: false
+    object_attributes_topic: /classifications_by_object
+    frame_skip: 0
+    enable_profile: true
+
+    # Common model contract. Other backends can be added behind IInferenceBackend.
+    model.backend: yolo
+    model.name: object_detector
+    model.type: yolo11_pose
+    model.path: ~/topsbot/models/yolo11s_pose_float16.nb
+
+    # One backend replica is loaded per NPU core.
+    npu.device_ids: [0]
+    load_balancer.strategy: least_loaded
+    load_balancer.queue_size: 2
+    load_balancer.drop_policy: drop_oldest
+
+    preprocess.letterbox: true
+    preprocess.letterbox_color: [114, 114, 114]
+    preprocess.auto_input_size: true
+    preprocess.input_width: 640
+    preprocess.input_height: 640
+
+    postprocess.confidence_threshold: 0.50
+    postprocess.nms_threshold: 0.45
+    postprocess.max_detections: 300
